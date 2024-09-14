@@ -76,3 +76,13 @@
 	width: 100%;
 	height: auto;
 }
+
+.name {
+	display: block;
+
+	&:not([disabled]):hover,
+	&:not([disabled]):focus,
+	&:not([disabled]):active {
+		text-decoration: underline;
+	}
+}

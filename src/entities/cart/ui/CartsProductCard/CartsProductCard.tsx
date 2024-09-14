@@ -16,13 +16,14 @@ export const CartsProductCard: React.FC<CartsProductCardPropsType> = ({ product,
 	const { id, name, price, image } = product
 	return (
 		<article className={classNames(styles.card, { [styles.isDeleted]: isDeleted })}>
-			<Link to={`/product/${id}`} className={styles.link} aria-label={`more about product ${name} `} />
 			<div className={styles.body}>
 				<div className={styles.imgWrapper}>
 					<img className={styles.img} src={image} alt={name} />
 				</div>
 				<div className={styles.desc}>
-					<h4 className={classNames('text-bold text-m', styles.name)}>{name}</h4>
+					<Link to={`/product/${id}`} className={classNames('text-bold text-m', styles.name)}>
+						{name}
+					</Link>
 					<span className={classNames('text-l', styles.price)}>${price}</span>
 				</div>
 			</div>
