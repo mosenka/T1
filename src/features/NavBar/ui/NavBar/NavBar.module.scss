@@ -1,0 +1,29 @@
+.wrapper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: torem(10);
+}
+
+.link {
+	padding: torem(12) torem(18);
+	color: var(--color-white);
+	font-size: torem(14);
+	font-weight: 600;
+	transition: all 0.4s;
+
+	&:last-child {
+		padding-right: 0;
+	}
+
+	&:not([disabled]):hover,
+	&:not([disabled]):focus,
+	&:not([disabled]):active {
+		color: var(--color-gray-200);
+		text-decoration: underline;
+	}
+
+	&[disabled] {
+		color: var(--color-gray-600);
+	}
+}

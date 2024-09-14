@@ -1,0 +1,33 @@
+.wrapper {
+	width: 100%;
+	background-color: var(--color-violet);
+}
+
+.container {
+	padding: torem(23) 0;
+	border-bottom: 1px solid var(--color-white);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	@include mobile {
+		padding: torem(23) torem(10);
+	}
+}
+
+.desktopNavBar {
+	@include mobileHr {
+		display: none;
+	}
+}
+
+.mobileNavBar {
+	display: none;
+
+	@include mobileHr {
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: torem(10);
+	}
+}

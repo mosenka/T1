@@ -1,0 +1,39 @@
+.container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: torem(1760);
+	min-width: torem(320);
+
+	@include desktopXxl {
+		width: torem(1760);
+	}
+
+	@include desktopXl {
+		width: torem(1320);
+	}
+
+	@include desktop {
+		width: torem(1180);
+	}
+
+	@include laptop {
+		width: torem(960);
+	}
+
+	@include tablet {
+		width: torem(728);
+	}
+
+	@include mobileHr {
+		width: torem(540);
+	}
+
+	@include mobile {
+		padding: 0 1rem;
+		width: 100%;
+	}
+
+	@media (width <= 350px) {
+		padding: 0 1rem;
+	}
+}

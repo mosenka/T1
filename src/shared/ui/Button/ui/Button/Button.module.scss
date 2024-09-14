@@ -1,0 +1,94 @@
+.btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	transition: all 0.4s;
+}
+
+.xs {
+	padding: torem(5) torem(20);
+}
+
+.sm {
+	padding: torem(16);
+}
+
+.md {
+	padding: torem(16) torem(20);
+}
+
+.xl {
+	font-size: torem(16);
+	font-weight: 400;
+	padding: torem(20) torem(50);
+
+	@include tablet {
+		padding: torem(15) torem(30);
+	}
+
+	@include mobileHr {
+		padding: torem(10) torem(25);
+	}
+}
+
+.orange {
+	background-color: var(--color-orange);
+	color: var(--color-white);
+	border-radius: torem(4);
+
+	&:not([disabled], [aria-disabled='true']):hover,
+	&:not([disabled], [aria-disabled='true']):focus,
+	&:not([disabled], [aria-disabled='true']):active {
+		background-color: var(--color-orange-dark);
+	}
+
+	&[disabled],
+	&[aria-disabled='true'] {
+		background-color: var(--color-orange-white);
+		cursor: not-allowed;
+	}
+}
+
+.loader {
+	flex: 0 0;
+	display: block;
+	height: 100%;
+	aspect-ratio: 1 / 1;
+
+	.xs & {
+		flex-basis: torem(13);
+	}
+
+	.sm & {
+		flex-basis: torem(15);
+	}
+
+	.xl & {
+		flex-basis: torem(18);
+	}
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1, 150;
+		stroke-dashoffset: 0;
+	}
+
+	50% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -35;
+	}
+
+	100% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -124;
+	}
+}

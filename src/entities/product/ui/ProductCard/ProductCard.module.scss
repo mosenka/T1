@@ -1,0 +1,95 @@
+.link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.imgWrapper {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 37 / 30;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.4s;
+}
+
+.img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+}
+
+.hiddenText {
+	font-weight: 800;
+	font-size: torem(26);
+	color: rgba(var(--color-white-components), 0.8);
+	z-index: 1;
+	user-select: none;
+	transform: scale(0);
+	transition: transform 0.4s ease-in-out;
+}
+
+.body {
+	display: grid;
+	grid-template-columns: 2fr auto;
+	padding: torem(10);
+	gap: torem(10);
+	overflow: hidden;
+}
+
+.desc {
+	flex: 0 1 auto;
+	min-width: 0;
+}
+
+.name {
+	width: auto;
+	max-width: torem(290);
+	white-space: nowrap; /* Запрещает перенос строки */
+	overflow: hidden; /* Скрывает текст, выходящий за пределы контейнера */
+	text-overflow: ellipsis;
+}
+
+.price {
+	display: block;
+	padding-top: torem(4.8);
+}
+
+.button {
+	flex: 0 1 auto;
+	position: relative;
+	z-index: 2;
+}
+
+.wrapper {
+	position: relative;
+	border: 1px solid var(--color-gray-200);
+	border-radius: torem(6);
+	box-sizing: border-box;
+
+	&:hover {
+		box-shadow: 0 6px 10px 0 rgba(var(--color-black-components), 0.25);
+
+		.imgWrapper {
+			background-color: rgba(var(--color-gray-200-components), 0.5);
+		}
+
+		.hiddenText {
+			transform: scale(1);
+		}
+
+		.name {
+			text-decoration: underline;
+		}
+	}
+}

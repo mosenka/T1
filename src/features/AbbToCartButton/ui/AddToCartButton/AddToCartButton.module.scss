@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	max-height: torem(50);
+}
+
+.button {
+	flex: 0 0 auto;
+}
+
+.textWrapper {
+	flex: 1 1 auto;
+	padding: torem(15) torem(20);
+
+	@include tablet {
+		padding: torem(10);
+	}
+}
+
+.text {
+	display: block;
+	width: torem(45);
+}

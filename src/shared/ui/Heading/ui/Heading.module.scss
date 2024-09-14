@@ -1,0 +1,32 @@
+.heading {
+	color: inherit;
+	line-height: 1.4;
+}
+
+.xl {
+	font-size: torem(36);
+
+	@include laptop {
+		font-size: torem(32);
+	}
+
+	@include mobile {
+		font-size: torem(28);
+	}
+}
+
+.light {
+	font-weight: 100;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.isUppercase {
+	text-transform: uppercase;
+}

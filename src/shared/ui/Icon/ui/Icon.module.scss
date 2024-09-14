@@ -1,0 +1,40 @@
+.icon {
+	display: inline-block;
+	aspect-ratio: 1 / 1;
+	height: auto;
+}
+
+.fill {
+	fill: currentcolor;
+	stroke: none;
+}
+
+.stroke {
+	stroke: currentcolor;
+	fill: none;
+}
+
+.xl {
+	width: 32px;
+	height: 32px;
+}
+
+.l {
+	width: 24px;
+	height: 24px;
+}
+
+.m {
+	width: 20px;
+	height: 20px;
+}
+
+.s {
+	width: 18px;
+	height: 18px;
+}
+
+.xs {
+	width: 16px;
+	height: 16px;
+}

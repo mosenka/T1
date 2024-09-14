@@ -1,0 +1,45 @@
+@import 'assets/reset';
+
+@import 'assets/variables';
+
+#root {
+	font-family: var(--base-font-family);
+	color: var(--base-font-color);
+	line-height: 1.4;
+}
+
+.text-s {
+	font-size: torem(14);
+}
+
+.text-m {
+	font-size: torem(16);
+}
+
+.text-l {
+	font-size: torem(18);
+}
+
+.text-xl {
+	font-size: torem(24);
+}
+
+.text-2xl {
+	font-size: torem(30);
+}
+
+.text-3xl {
+	font-size: torem(36);
+}
+
+.text-regular {
+	font-weight: 400;
+}
+
+.text-bold {
+	font-weight: 700;
+}
+
+.text-semi-bold {
+	font-weight: 600;
+}

@@ -3,28 +3,27 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
 
-import eslintConfigPrettier from "eslint-config-prettier";
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 import jsxA11y from 'eslint-plugin-jsx-a11y'
-
 
 export default [
 	js.configs.recommended,
 	eslintConfigPrettier,
 	jsxA11y.flatConfigs.strict,
-	{ignores: ['dist']},
+	{ ignores: ['dist', 'vite.config.ts'] },
 	{
 		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
 				ecmaVersion: 2020,
-				sourceType: 'module',
+				sourceType: 'module'
 			},
-			globals: globals.browser,
+			globals: globals.browser
 		},
 		plugins: {
 			'react-hooks': reactHooks,
@@ -35,12 +34,8 @@ export default [
 		rules: {
 			...tsPlugin.configs.recommended.rules,
 			...reactHooks.configs.recommended.rules,
-			'react-refresh/only-export-components': [
-				'warn',
-				{allowConstantExport: true},
-			],
+			'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 			'no-multiple-empty-lines': ['error', { max: 1 }]
-		},
+		}
 	}
 ]
-

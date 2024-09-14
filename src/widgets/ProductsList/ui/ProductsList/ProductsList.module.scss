@@ -1,0 +1,23 @@
+.list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: torem(16) torem(35);
+	padding-bottom: torem(46);
+
+	@include laptop {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include tablet {
+		gap: torem(15);
+	}
+
+	@include mobileHr {
+		gap: torem(15);
+		grid-template-columns: 1fr;
+	}
+}
+
+.buttonWrapper {
+	text-align: center;
+}

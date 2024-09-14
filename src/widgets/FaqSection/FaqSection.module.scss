@@ -1,0 +1,24 @@
+.section {
+	padding: torem(60) 0;
+	width: 100%;
+	background-color: var(--color-violet);
+	color: var(--color-white);
+}
+
+.inner {
+	width: 74.5%;
+	margin: 0 auto;
+
+	@include tablet {
+		width: 100%;
+	}
+}
+
+.title {
+	padding-top: torem(6);
+	padding-bottom: torem(20);
+
+	@include mobile {
+		padding-bottom: torem(10);
+	}
+}

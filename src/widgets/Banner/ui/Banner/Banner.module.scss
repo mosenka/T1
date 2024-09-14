@@ -1,0 +1,96 @@
+.banner {
+	width: 100%;
+	background-color: var(--color-violet);
+	color: var(--color-white);
+
+	@include desktopXxl {
+		padding: torem(120) 0;
+	}
+
+	@include desktopXl {
+		padding: torem(115) 0;
+	}
+
+	@include laptop {
+		padding: torem(50) 0;
+	}
+}
+
+.title {
+	font-size: torem(36);
+	font-weight: 400;
+
+	@include laptop {
+		font-size: torem(32);
+	}
+}
+
+.desc {
+	font-size: torem(16);
+	font-weight: 600;
+
+	@include desktop {
+		width: torem(336);
+	}
+
+	@include laptop {
+		width: 100%;
+	}
+}
+
+.container {
+	position: relative;
+	z-index: 1;
+}
+
+.inner {
+	position: relative;
+	z-index: 1;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: torem(30);
+
+	@include desktopXxl {
+		width: 40%;
+	}
+
+	@include desktopXl {
+		width: 45%;
+	}
+
+	@include laptop {
+		width: 60%;
+	}
+
+	@include tablet {
+		width: 100%;
+	}
+}
+
+.backText {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-size: torem(200);
+	line-height: 1.1;
+	font-weight: 700;
+	text-align: center;
+	width: 100%;
+	color: rgba(var(--color-white-components), 0.12);
+	z-index: 0;
+
+	@include laptop {
+		font-size: torem(150);
+	}
+
+	@include tablet {
+		font-size: torem(120);
+		bottom: 5%;
+	}
+
+	@include mobileHr {
+		display: none;
+	}
+}
