@@ -26,7 +26,7 @@ export function appRouter() {
 					path: '/cart',
 					element: (
 						<>
-							<PageTitle title={'Cart'} />
+							<PageTitle title={'My cart | Goods4you'} />
 							<CartPage />
 						</>
 					)

@@ -1,7 +1,6 @@
 import React from 'react'
-
-// import styles from './CartPage.module.scss'
+import { CartSection } from '@widgets/CartSection'
 
 export const CartPage: React.FC = () => {
-	return <>cart page</>
+	return <CartSection />
 }

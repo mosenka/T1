@@ -2,7 +2,7 @@ import React from 'react'
 
 import { createRandomProductList } from '../../lib/createRandomProductList'
 import { ProductCard } from '@entities/product'
-import { AddToCartButton } from '@features/AbbToCartButton'
+import { AddToCartButton } from '@entities/cart'
 
 import styles from './ProductsList.module.scss'
 import { Button } from '@shared/ui'

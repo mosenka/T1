@@ -1,0 +1,14 @@
+.delete {
+	color: var(--color-gray-500);
+	font-size: torem(14);
+	line-height: 1.5;
+	padding: torem(15);
+	transition: all 0.4s;
+
+	&:not([disabled]):hover,
+	&:not([disabled]):focus,
+	&:not([disabled]):active {
+		color: var(--color-gray-900);
+		text-decoration: underline;
+	}
+}
