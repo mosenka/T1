@@ -1,1 +1,1 @@
-export * from './ui/AddToCartButton/AddToCartButton'
+export * from './ui/AddToCartButton/ui/AddToCartButton/AddToCartButton.tsx'

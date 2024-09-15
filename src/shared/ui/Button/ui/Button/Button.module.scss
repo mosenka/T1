@@ -17,6 +17,10 @@
 
 .md {
 	padding: torem(16) torem(20);
+
+	@include tablet {
+		padding: torem(10);
+	}
 }
 
 .xl {

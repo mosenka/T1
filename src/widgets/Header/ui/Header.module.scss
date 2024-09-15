@@ -5,10 +5,13 @@
 
 .container {
 	padding: torem(23) 0;
-	border-bottom: 1px solid var(--color-white);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	&.isBorder {
+		border-bottom: 1px solid var(--color-white);
+	}
 
 	@include mobile {
 		padding: torem(23) torem(10);

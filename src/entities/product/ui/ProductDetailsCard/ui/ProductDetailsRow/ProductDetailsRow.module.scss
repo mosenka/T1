@@ -1,0 +1,9 @@
+.row {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	@include mobileHr {
+		flex-wrap: wrap;
+	}
+}

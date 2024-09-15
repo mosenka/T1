@@ -1,0 +1,7 @@
+.icon {
+	&.xl {
+		@include tablet {
+			width: torem(20);
+		}
+	}
+}

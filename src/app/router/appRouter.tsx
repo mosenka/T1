@@ -6,6 +6,7 @@ import { PageTitle } from '@shared/ui'
 
 import { MainPage } from '@pages/main'
 import { CartPage } from '@pages/cart'
+import { ProductPage } from '@pages/product'
 
 export function appRouter() {
 	return createBrowserRouter([
@@ -28,6 +29,15 @@ export function appRouter() {
 						<>
 							<PageTitle title={'My cart | Goods4you'} />
 							<CartPage />
+						</>
+					)
+				},
+				{
+					path: '/product/:id',
+					element: (
+						<>
+							<PageTitle title={'Essence Mascara Lash Princess | Goods4you'} />
+							<ProductPage />
 						</>
 					)
 				}

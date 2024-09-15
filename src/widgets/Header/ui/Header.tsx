@@ -8,16 +8,19 @@ import { CartNavButton } from '@entities/cart'
 import { UserName } from '@entities/user'
 
 import styles from './Header.module.scss'
+import { useLocation } from 'react-router-dom'
+import classNames from 'classnames'
 
 const USER_NAME = 'Johnson Smith'
 const CART_COUNT = 100
 
 export const Header: React.FC = () => {
+	const location = useLocation()
 	const [isOpenMenu, setIsOpenMenu] = useState(false)
 
 	return (
 		<div className={styles.wrapper}>
-			<Container className={styles.container}>
+			<Container className={classNames(styles.container, { [styles.isBorder]: location?.pathname === '/' })}>
 				<Logo />
 				<NavBar className={styles.desktopNavBar}>
 					<>

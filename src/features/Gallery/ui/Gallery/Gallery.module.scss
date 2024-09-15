@@ -1,0 +1,28 @@
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: torem(9);
+}
+
+.previewList {
+	max-width: 100%;
+	width: 100%;
+	display: flex;
+	gap: torem(20);
+	overflow: auto;
+}
+
+.img {
+	border: 1px solid var(--color-gray-200);
+	border-radius: torem(4);
+
+	&.isActive {
+		border-color: var(--color-violet);
+	}
+}
+
+.preview {
+	flex: 0 0 torem(70);
+	cursor: pointer;
+}

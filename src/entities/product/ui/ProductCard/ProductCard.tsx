@@ -2,7 +2,9 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import React, { ReactElement } from 'react'
 
-import { ProductType } from '../../types/ProductType.ts'
+import { AdaptiveImage } from '@shared/ui'
+
+import { ProductType } from '../../types/ProductType'
 
 import styles from './ProductCard.module.scss'
 
@@ -17,10 +19,9 @@ export const ProductCard: React.FC<ProductCardPropsType> = ({ product, cartButto
 	return (
 		<article className={styles.wrapper}>
 			<Link to={`/product/${id}`} className={styles.link} aria-label={`more about product ${name} `} />
-			<div className={styles.imgWrapper}>
-				<img className={styles.img} src={image} alt={name} />
+			<AdaptiveImage alt={name} src={image} wrapperClassName={styles.imgWrapper} aspectRatio={'37 / 30'}>
 				<span className={styles.hiddenText}>Show details</span>
-			</div>
+			</AdaptiveImage>
 			<div className={styles.body}>
 				<div className={styles.desc}>
 					<h4 className={classNames('text-bold text-m', styles.name)}>{name}</h4>

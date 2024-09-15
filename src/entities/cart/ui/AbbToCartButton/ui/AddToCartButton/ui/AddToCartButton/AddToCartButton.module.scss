@@ -1,0 +1,52 @@
+.wrapper {
+	display: inline-flex;
+	align-items: center;
+
+	&.m {
+		max-height: torem(50);
+	}
+}
+
+.button {
+	flex: 0 0 auto;
+}
+
+.textWrapper {
+	flex: 1 1 auto;
+	text-align: center;
+
+	&.m {
+		padding: torem(15) torem(20);
+
+		@include tablet {
+			padding: torem(10);
+		}
+	}
+
+	&.xl {
+		padding: torem(20) torem(30);
+
+		@include tablet {
+			padding: torem(10);
+		}
+	}
+}
+
+.text {
+	display: block;
+
+	.m & {
+		width: torem(45);
+		font-size: torem(14);
+	}
+
+	.xl & {
+		font-size: torem(18);
+		width: torem(60);
+
+		@include tablet {
+			font-size: torem(16);
+			width: torem(55);
+		}
+	}
+}

@@ -1,0 +1,61 @@
+.card {
+	padding: torem(12);
+	width: 100%;
+	background-color: var(--color-gray-100);
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: torem(6);
+
+	@include mobile {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: torem(10) torem(5);
+		gap: torem(5);
+	}
+}
+
+.priceWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 0 torem(24) 0 torem(20);
+	border-right: 1px solid var(--color-gray-200);
+
+	@include mobile {
+		padding: 0 torem(12);
+		flex-direction: row;
+		align-items: center;
+		gap: torem(15);
+		border-right: none;
+	}
+}
+
+.price {
+	font-size: torem(36);
+	font-weight: 600;
+	line-height: 1.1;
+
+	@include mobile {
+		font-size: torem(28);
+	}
+}
+
+.discount {
+	padding: torem(23);
+	font-size: torem(16);
+
+	@include mobile {
+		padding: 0 torem(10);
+	}
+}
+
+.oldPrice {
+	text-decoration: line-through;
+}
+
+.buttons {
+	text-align: right;
+	flex: 1 1 auto;
+}
