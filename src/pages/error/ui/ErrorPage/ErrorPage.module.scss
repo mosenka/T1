@@ -1,0 +1,25 @@
+.container {
+	height: 100%;
+}
+
+.inner {
+	padding: torem(150) 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: torem(30);
+
+	@include mobileHr {
+		padding: torem(30) 0;
+	}
+}
+
+.title {
+	font-size: torem(150);
+	line-height: 1;
+
+	@include mobileHr {
+		font-size: torem(100);
+	}
+}

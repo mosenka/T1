@@ -7,12 +7,12 @@ import { PageTitle } from '@shared/ui'
 import { MainPage } from '@pages/main'
 import { CartPage } from '@pages/cart'
 import { ProductPage } from '@pages/product'
+import { ErrorPage } from '@pages/error'
 
 export function appRouter() {
 	return createBrowserRouter([
 		{
 			element: <BaseLayout />,
-			errorElement: <div>error page</div>,
 			children: [
 				{
 					path: '/',
@@ -38,6 +38,15 @@ export function appRouter() {
 						<>
 							<PageTitle title={'Essence Mascara Lash Princess | Goods4you'} />
 							<ProductPage />
+						</>
+					)
+				},
+				{
+					path: '*',
+					element: (
+						<>
+							<PageTitle title={'error'} />
+							<ErrorPage />
 						</>
 					)
 				}
