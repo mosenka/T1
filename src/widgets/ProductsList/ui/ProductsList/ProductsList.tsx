@@ -1,26 +1,45 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
-import { createRandomProductList } from '../../lib/createRandomProductList'
-import { ProductCard } from '@entities/product'
-import { AddToCartButton } from '@entities/cart'
+import { useAppSelector } from '@shared/libs/hooks'
+import { Button, CardSkeleton, ErrorMessage } from '@shared/ui'
+
+import { ProductCard, useGetProductsList } from '@entities/product'
+import { AddToCartButton, getCartStates } from '@entities/cart'
 
 import styles from './ProductsList.module.scss'
-import { Button } from '@shared/ui'
 
 export const ProductsList: React.FC = () => {
-	const products = React.useMemo(() => createRandomProductList(12), [])
+	const { isLoading, isError, productsList, fetchMoreProducts } = useGetProductsList()
+	const { cartsList } = useAppSelector(getCartStates)
 
-	const button = <AddToCartButton />
+	const loadingCardsList = Array.from({ length: 12 }, (_, i) => <CardSkeleton key={i} />)
 
-	const productsCardsList = products?.map(product => (
-		<ProductCard product={product} key={product.id} cartButton={button} />
-	))
+	const productsCardsList = useMemo(() => {
+		return productsList?.map(product => {
+			const quantity = cartsList?.carts[0]?.products?.find(item => item.id === product.id)?.quantity
+			const button = <AddToCartButton count={quantity} />
+
+			return <ProductCard product={product} key={product.id} cartButton={button} />
+		})
+	}, [productsList, cartsList])
+
+	if (isLoading) {
+		return <div className={styles.list}>{loadingCardsList}</div>
+	}
+
+	if (isError) {
+		return <ErrorMessage />
+	}
+
+	if (productsList.length === 0) {
+		return <p> список пуст...</p>
+	}
 
 	return (
 		<>
 			<div className={styles.list}>{productsCardsList}</div>
 			<div className={styles.buttonWrapper}>
-				<Button size={Button.SIZE.XL} aria-label={'show more products card'}>
+				<Button size={Button.SIZE.XL} aria-label={'show more products card'} onClick={fetchMoreProducts}>
 					Show more
 				</Button>
 			</div>
