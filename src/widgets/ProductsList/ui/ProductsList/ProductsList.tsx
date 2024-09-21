@@ -18,7 +18,6 @@ export const ProductsList: React.FC = () => {
 		return productsList?.map(product => {
 			const quantity = getProductCountInCart(product.id, cart)
 
-			console.log(quantity)
 			const button = <AddToCartButton count={quantity} />
 
 			return <ProductCard product={product} key={product.id} cartButton={button} />
