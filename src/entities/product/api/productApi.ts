@@ -1,6 +1,6 @@
 import { commonApi } from '@shared/api'
 
-import { ProductSearchParamsType, ProductsListResponseType } from '@entities/product'
+import { ProductResponseType, ProductSearchParamsType, ProductsListResponseType } from '@entities/product'
 
 export const productApi = commonApi.injectEndpoints({
 	endpoints: build => ({
@@ -10,8 +10,14 @@ export const productApi = commonApi.injectEndpoints({
 				params
 			}),
 			providesTags: ['ProductsList']
+		}),
+		getProductById: build.query<ProductResponseType, number | string>({
+			query: id => ({
+				url: `/products/${id}`
+			}),
+			providesTags: ['Product']
 		})
 	})
 })
 
-export const { useSearchProductsQuery, useLazySearchProductsQuery } = productApi
+export const { useSearchProductsQuery, useLazySearchProductsQuery, useGetProductByIdQuery } = productApi

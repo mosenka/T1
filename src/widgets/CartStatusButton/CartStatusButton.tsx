@@ -6,7 +6,7 @@ import { ErrorMessage, Spinner } from '@shared/ui'
 import { CartNavButton, getCartStates } from '@entities/cart'
 
 export const CartStatusButton: React.FC = memo(() => {
-	const { isLoading, cartsList, isError } = useAppSelector(getCartStates)
+	const { isLoading, cart, isError } = useAppSelector(getCartStates)
 
 	if (isLoading) {
 		return <Spinner size={Spinner.SIZE.XS} />
@@ -16,9 +16,7 @@ export const CartStatusButton: React.FC = memo(() => {
 		return <ErrorMessage text={'Ошибка'} />
 	}
 
-	if (cartsList) {
-		return <CartNavButton count={cartsList.carts?.[0]?.totalQuantity} />
-	}
+	return <CartNavButton count={cart?.totalQuantity} />
 })
 
 CartStatusButton.displayName = 'CartStatusButton'

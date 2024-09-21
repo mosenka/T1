@@ -8,7 +8,7 @@ import { ActionCartButton } from '../ActionCartButton/ActionCartButton'
 import styles from './AddToCartButton.module.scss'
 
 interface AddToCartButtonPropsType {
-	count?: number
+	count?: number | null
 	size?: AddToCartButtonSizes
 }
 

@@ -1,39 +1,42 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
-import { PriceCard, ProductDetailsCard } from '@entities/product'
-import { AddToCartButton } from '@entities/cart'
+import { useAppSelector } from '@shared/libs/hooks'
+
+import { PriceCard, ProductDetailsCard, ProductResponseType } from '@entities/product'
+import { AddToCartButton, getCartStates, getProductCountInCart } from '@entities/cart'
 import { Raiting } from '@features/Raiting'
 
-const PRODUCT = {
-	name: 'Essence Mascara Lash Princess',
-	category: 'electronics, selfie accessories',
-	stockInfo: 'In Stock - Only 5 left!',
-	desc: 'The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.',
-	otherInfo: ['1 month warranty', 'Ships in 1 month']
+interface ProductDetailsInformationPropsType {
+	product: ProductResponseType
+	id: string
 }
 
-export const ProductDetailsInformation: React.FC = () => {
+export const ProductDetailsInformation: React.FC<ProductDetailsInformationPropsType> = ({ product, id }) => {
+	const { cart } = useAppSelector(getCartStates)
+
+	const productQuantity = useMemo(() => {
+		return getProductCountInCart(Number(id), cart)
+	}, [cart, id])
+
 	return (
 		<ProductDetailsCard>
 			<ProductDetailsCard.HEAD>
-				<ProductDetailsCard.TITLE title={PRODUCT.name} />
+				<ProductDetailsCard.TITLE title={product.title} />
 				<ProductDetailsCard.ROW>
-					<Raiting count={4} />
-					<ProductDetailsCard.CATEGORY text={PRODUCT.category} />
+					<Raiting count={product.rating} />
+					<ProductDetailsCard.CATEGORY text={product.tags.join(', ')} />
 				</ProductDetailsCard.ROW>
 			</ProductDetailsCard.HEAD>
-			<ProductDetailsCard.STOCK text={PRODUCT.stockInfo} />
-			<ProductDetailsCard.DESCRIPTION>{PRODUCT.desc}</ProductDetailsCard.DESCRIPTION>
+			<ProductDetailsCard.STOCK text={` In Stock - Only ${product.stock} left!`} />
+			<ProductDetailsCard.DESCRIPTION>{product.description}</ProductDetailsCard.DESCRIPTION>
 			<ProductDetailsCard.OTHER>
-				{PRODUCT.otherInfo.map(info => (
-					<p>{info}</p>
-				))}
+				<p>{product.warrantyInformation}</p>
+				<p>{product.shippingInformation}</p>
 			</ProductDetailsCard.OTHER>
 			<PriceCard
-				price={9.99}
-				discount={'14.5%'}
-				discountedPrice={7.17}
-				addToCartButton={<AddToCartButton size={AddToCartButton.SIZE.XL} />}
+				price={product.price}
+				discountPercent={product.discountPercentage}
+				addToCartButton={<AddToCartButton size={AddToCartButton.SIZE.XL} count={productQuantity} />}
 			/>
 		</ProductDetailsCard>
 	)

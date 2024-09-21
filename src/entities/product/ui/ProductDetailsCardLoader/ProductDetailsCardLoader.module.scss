@@ -1,0 +1,19 @@
+.container {
+	display: grid;
+	grid-template-columns: torem(520) 1fr;
+	gap: torem(40);
+	padding-bottom: torem(62);
+
+	@include laptop {
+		grid-template-columns: torem(400) 1fr;
+		gap: torem(20);
+	}
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.panel {
+	min-height: torem(80);
+}

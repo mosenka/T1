@@ -1,27 +1,29 @@
 import React, { useMemo } from 'react'
 
 import { useAppSelector } from '@shared/libs/hooks'
-import { Button, CardSkeleton, ErrorMessage } from '@shared/ui'
+import { Button, ErrorMessage } from '@shared/ui'
 
-import { ProductCard, useGetProductsList } from '@entities/product'
-import { AddToCartButton, getCartStates } from '@entities/cart'
+import { ProductCard, ProductCardLoader, useGetProductsList } from '@entities/product'
+import { AddToCartButton, getCartStates, getProductCountInCart } from '@entities/cart'
 
 import styles from './ProductsList.module.scss'
 
 export const ProductsList: React.FC = () => {
-	const { isLoading, isError, productsList, fetchMoreProducts } = useGetProductsList()
-	const { cartsList } = useAppSelector(getCartStates)
+	const { isLoading, isError, productsList, fetchMoreProducts, isHideButton } = useGetProductsList()
+	const { cart } = useAppSelector(getCartStates)
 
-	const loadingCardsList = Array.from({ length: 12 }, (_, i) => <CardSkeleton key={i} />)
+	const loadingCardsList = Array.from({ length: 12 }, (_, i) => <ProductCardLoader key={i} />)
 
 	const productsCardsList = useMemo(() => {
 		return productsList?.map(product => {
-			const quantity = cartsList?.carts[0]?.products?.find(item => item.id === product.id)?.quantity
+			const quantity = getProductCountInCart(product.id, cart)
+
+			console.log(quantity)
 			const button = <AddToCartButton count={quantity} />
 
 			return <ProductCard product={product} key={product.id} cartButton={button} />
 		})
-	}, [productsList, cartsList])
+	}, [productsList, cart])
 
 	if (isLoading) {
 		return <div className={styles.list}>{loadingCardsList}</div>
@@ -38,11 +40,13 @@ export const ProductsList: React.FC = () => {
 	return (
 		<>
 			<div className={styles.list}>{productsCardsList}</div>
-			<div className={styles.buttonWrapper}>
-				<Button size={Button.SIZE.XL} aria-label={'show more products card'} onClick={fetchMoreProducts}>
-					Show more
-				</Button>
-			</div>
+			{!isHideButton && (
+				<div className={styles.buttonWrapper}>
+					<Button size={Button.SIZE.XL} aria-label={'show more products card'} onClick={fetchMoreProducts}>
+						Show more
+					</Button>
+				</div>
+			)}
 		</>
 	)
 }

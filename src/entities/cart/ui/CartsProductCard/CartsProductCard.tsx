@@ -10,7 +10,7 @@ import styles from './CartsProductCard.module.scss'
 interface CartsProductCardPropsType {
 	product: CartsProductResponseType
 	cartButton?: ReactElement
-	isDeleted: boolean
+	isDeleted?: boolean
 }
 
 export const CartsProductCard: React.FC<CartsProductCardPropsType> = ({ product, cartButton, isDeleted }) => {

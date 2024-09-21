@@ -1,1 +1,1 @@
-export const tags = ['ProductsList']
+export const tags = ['ProductsList', 'Product']

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { BaseLayout } from '@app/layouts'
 
@@ -36,19 +36,22 @@ export function appRouter() {
 					path: '/product/:id',
 					element: (
 						<>
-							<PageTitle title={'Essence Mascara Lash Princess | Goods4you'} />
 							<ProductPage />
 						</>
 					)
 				},
 				{
-					path: '*',
+					path: '/error',
 					element: (
 						<>
 							<PageTitle title={'error'} />
 							<ErrorPage />
 						</>
 					)
+				},
+				{
+					path: '*',
+					element: <Navigate to="/error" />
 				}
 			]
 		}

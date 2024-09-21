@@ -1,3 +1,19 @@
+.content {
+	display: grid;
+	grid-template-columns: 1fr torem(358);
+	gap: torem(48);
+	padding-bottom: torem(37);
+
+	@include laptop {
+		grid-template-columns: 1fr torem(250);
+		gap: torem(25);
+	}
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
 .list {
 	padding: torem(20) torem(40);
 	border: 1px solid var(--color-gray-200);

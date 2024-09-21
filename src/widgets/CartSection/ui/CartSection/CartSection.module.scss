@@ -10,19 +10,3 @@
 		padding-bottom: torem(20);
 	}
 }
-
-.content {
-	display: grid;
-	grid-template-columns: 1fr torem(358);
-	gap: torem(48);
-	padding-bottom: torem(37);
-
-	@include laptop {
-		grid-template-columns: 1fr torem(250);
-		gap: torem(25);
-	}
-
-	@include tablet {
-		grid-template-columns: 1fr;
-	}
-}
