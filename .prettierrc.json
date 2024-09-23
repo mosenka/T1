@@ -1,0 +1,12 @@
+{
+  "trailingComma": "none",
+  "tabWidth": 4,
+  "semi": false,
+  "space-before-function-paren": "on",
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "maxLineLength": 120,
+  "jsxBracketSameLine": false,
+  "endOfLine": "crlf"
+}

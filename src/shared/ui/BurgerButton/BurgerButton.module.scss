@@ -1,0 +1,60 @@
+$background: transparent;
+$colorLine: var(--color-white);
+$width: torem(24);
+$heightLine: torem(2);
+$gap: torem(6);
+
+.button {
+	background-color: $background;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: torem(3);
+	gap: $gap;
+	cursor: pointer;
+	transition: all 0.4s;
+
+	&:not([disabled]):hover,
+	&:not([disabled]):focus,
+	&:not([disabled]):active {
+		color: var(--color-gray-200);
+	}
+
+	@include tablet {
+		display: flex;
+	}
+
+	&::after,
+	&::before {
+		display: block;
+		content: '';
+		width: 100%;
+	}
+
+	&::after,
+	&::before,
+	span {
+		width: $width;
+		height: $heightLine;
+		background-color: var(--color-white);
+		border-radius: torem(3);
+		transition:
+			transform 0.3s,
+			opacity 0.3s;
+	}
+
+	&.is-open {
+		span {
+			opacity: 0;
+		}
+
+		&::after {
+			transform: translateY(torem(-7.5)) rotate(45deg);
+		}
+
+		&::before {
+			transform: translateY(torem(8.5)) rotate(-45deg);
+		}
+	}
+}

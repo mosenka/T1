@@ -1,0 +1,29 @@
+:root {
+	/* colors */
+	--color-violet-components: 72, 66, 131;
+	--color-violet: rgb(var(--color-violet-components));
+	--color-orange-components: 241, 79, 79;
+	--color-orange: rgb(var(--color-orange-components));
+	--color-orange-dark-components: 140, 40, 40;
+	--color-orange-dark: rgb(var(--color-orange-dark-components));
+	--color-orange-white-components: 248, 175, 175;
+	--color-orange-white: rgb(var(--color-orange-white-components));
+	--color-white-components: 255, 255, 255;
+	--color-white: rgb(var(--color-white-components));
+	--color-black-components: 0, 0, 0;
+	--color-black: rgb(0 0 0);
+	--color-gray-100-components: 246, 246, 246;
+	--color-gray-100: rgb(var(--color-gray-100-components));
+	--color-gray-200-components: 213, 213, 213;
+	--color-gray-200: rgb(var(--color-gray-200-components));
+	--color-gray-500-components: 178, 181, 187;
+	--color-gray-500: rgb(var(--color-gray-500-components));
+	--color-gray-600-components: 109, 114, 123;
+	--color-gray-600: rgb(var(--color-gray-600-components));
+	--color-gray-900-components: 68, 75, 88;
+	--color-gray-900: rgb(var(--color-gray-900-components));
+
+	/* base styles */
+	--base-font-family: 'Jost', sans-serif;
+	--base-font-color: var(--color-gray-900);
+}

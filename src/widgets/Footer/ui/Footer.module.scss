@@ -1,0 +1,15 @@
+.wrapper {
+	width: 100%;
+	background-color: var(--color-gray-900);
+}
+
+.container {
+	padding: torem(23) 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	@include mobile {
+		flex-direction: column;
+	}
+}

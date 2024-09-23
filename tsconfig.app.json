@@ -18,7 +18,38 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"],
+    /*  "Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"],
+      "@/*": [
+        "*"
+      ],
+      "@root/*": [
+        "./*"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@entities/*": [
+        "./src/entities/*"
+      ],
+      "@features/*": [
+        "./src/features/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@widgets/*": [
+        "./src/widgets/*"
+      ]
+    }
   },
   "include": ["src"]
 }

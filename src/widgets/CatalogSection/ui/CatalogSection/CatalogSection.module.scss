@@ -1,0 +1,18 @@
+.section {
+	padding: torem(50) 0;
+	width: 100%;
+	background-color: var(--color-white);
+
+	@include tablet {
+		padding: torem(30) 0;
+	}
+}
+
+.title,
+.inputWrapper {
+	padding-bottom: torem(48);
+
+	@include tablet {
+		padding-bottom: torem(20);
+	}
+}

@@ -1,0 +1,14 @@
+.wrapper {
+	display: inline-flex;
+	gap: torem(4);
+}
+
+.star {
+	display: block;
+	flex: 0 0 torem(20);
+	color: var(--color-gray-200);
+
+	&.isActive {
+		color: var(--color-orange);
+	}
+}

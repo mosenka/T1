@@ -1,0 +1,108 @@
+.wrapper {
+	color: var(--base-font-color);
+	position: relative;
+	display: flex;
+
+	&.top {
+		flex-direction: column;
+	}
+
+	&.left {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&.m {
+		font-size: torem(16);
+		gap: torem(10);
+	}
+}
+
+.input {
+	color: inherit;
+	width: 100%;
+	border-radius: torem(4);
+	transition:
+		color 0.4s,
+		border 0.4s;
+	font-size: inherit;
+
+	&.gray {
+		background-color: var(--color-gray-100);
+		border: 1px solid var(--color-gray-100);
+
+		&::placeholder {
+			color: var(--color-gray-500);
+		}
+
+		&:not([disabled], [aria-invalid='true']):focus,
+		&:not([disabled], [aria-invalid='true']):active {
+			color: var(--base-font-color);
+		}
+	}
+
+	&[aria-invalid='true'] {
+		border-color: var(--color-orange);
+		color: var(--red-darken);
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23FF5E5E'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23FF5E5E' stroke='none'/%3e%3c/svg%3e");
+		background-repeat: no-repeat;
+		background-position: 98% 50%;
+	}
+
+	&[disabled],
+	&[aria-disabled='true'] {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&.m {
+		padding: torem(10) torem(20);
+	}
+
+	&.xl {
+		padding: torem(20);
+		font-size: torem(16);
+	}
+}
+
+.inputWrapper {
+	position: relative;
+}
+
+.label {
+	flex: 0 0 auto;
+	color: var(--base-font-color);
+	white-space: nowrap;
+
+	.wrapper.top > & {
+		padding-bottom: torem(5);
+	}
+
+	.wrapper.left > & {
+		padding-right: torem(10);
+	}
+
+	&.isDisabled {
+		opacity: 0.5;
+	}
+}
+
+.dot {
+	color: var(--color-orange);
+	padding-left: torem(10);
+	font-size: torem(16);
+}
+
+.error {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	color: var(--color-orange);
+	font-size: torem(12);
+	font-weight: bold;
+
+	@include desktopXl {
+		font-size: torem(14);
+		top: 100%;
+	}
+}
