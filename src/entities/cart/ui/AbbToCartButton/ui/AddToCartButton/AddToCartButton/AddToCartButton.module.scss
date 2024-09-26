@@ -5,10 +5,13 @@
 	&.m {
 		max-height: torem(50);
 	}
+
+
 }
 
 .button {
 	flex: 0 0 auto;
+
 }
 
 .textWrapper {
@@ -34,6 +37,7 @@
 
 .text {
 	display: block;
+	text-align: center;
 
 	.m & {
 		width: torem(45);

@@ -1,19 +1,21 @@
+import classNames from 'classnames'
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { BurgerButton, Container, Logo } from '@shared/ui'
+import { useAppSelector } from '@shared/libs/hooks'
+
+import { selectFullName } from '@entities/auth'
+import { UserName } from '@entities/user'
 
 import { MobileNavBar, NavBar } from '@features/NavBar'
 
-import { UserName } from '@entities/user'
 import { CartStatusButton } from '@widgets/CartStatusButton'
 
 import styles from './Header.module.scss'
-import { useLocation } from 'react-router-dom'
-import classNames from 'classnames'
-
-const USER_NAME = 'Johnson Smith'
 
 export const Header: React.FC = () => {
+	const fullName = useAppSelector(selectFullName)
 	const location = useLocation()
 	const [isOpenMenu, setIsOpenMenu] = useState(false)
 
@@ -24,7 +26,7 @@ export const Header: React.FC = () => {
 				<NavBar className={styles.desktopNavBar}>
 					<>
 						<CartStatusButton />
-						<UserName name={USER_NAME} />
+						{fullName && <UserName name={fullName} />}
 					</>
 				</NavBar>
 				<div className={styles.mobileNavBar}>

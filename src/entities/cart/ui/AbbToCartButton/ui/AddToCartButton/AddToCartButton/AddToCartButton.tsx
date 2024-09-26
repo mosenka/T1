@@ -1,5 +1,7 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import React from 'react'
+
+import { Spinner } from '@shared/ui'
 
 import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
 import { EmptyCartButton } from '../EmptyCartButton/EmptyCartButton'
@@ -10,6 +12,10 @@ import styles from './AddToCartButton.module.scss'
 interface AddToCartButtonPropsType {
 	count?: number | null
 	size?: AddToCartButtonSizes
+	addItemHandler: () => void
+	removeItemHandler: () => void
+	isLoading?: boolean
+	isDisabledForAdd?: boolean
 }
 
 interface AddToCartButtonExtendsType {
@@ -18,9 +24,13 @@ interface AddToCartButtonExtendsType {
 
 export const AddToCartButton: AddToCartButtonExtendsType & React.FC<AddToCartButtonPropsType> = ({
 	size = AddToCartButtonSizes.M,
-	count: initCount
+	count,
+	addItemHandler,
+	removeItemHandler,
+	isLoading = false,
+	isDisabledForAdd
 }) => {
-	const [count, setCount] = useState<number>(initCount ?? 0)
+	// const [count, setCount] = useState<number>(initCount ?? 0)
 
 	return (
 		<div className={classNames(styles.wrapper, styles[size])}>
@@ -29,26 +39,36 @@ export const AddToCartButton: AddToCartButtonExtendsType & React.FC<AddToCartBut
 					<ActionCartButton
 						icon={'iconMinus'}
 						aria-label={'remove one item from cart'}
-						onClick={() => setCount(prevState => prevState - 1)}
+						onClick={removeItemHandler}
 						className={styles.button}
 						size={size}
+						disabled={isLoading || count === 0}
 					/>
 					<div className={classNames(styles.textWrapper, styles[size])}>
-						<span className={classNames('text-s', styles.text)}>{count} item</span>
+						{isLoading && (
+							<span className={styles.text}>
+								<Spinner size={Spinner.SIZE.XS} />
+							</span>
+						)}
+						{!isLoading && <span className={classNames('text-s', styles.text)}>{count} item</span>}
 					</div>
 					<ActionCartButton
 						icon={'iconPlus'}
 						aria-label={'add one item to cart'}
-						onClick={() => setCount(prevState => prevState + 1)}
+						onClick={addItemHandler}
 						className={styles.button}
 						size={size}
+						disabled={isLoading || isDisabledForAdd}
 					/>
 				</>
 			) : (
 				<EmptyCartButton
 					size={size}
-					onClick={() => setCount(prevState => prevState + 1)}
+					onClick={addItemHandler}
 					className={styles.button}
+					disabled={isLoading || isDisabledForAdd}
+					isLoading={isLoading}
+					aria-label={'add to cart'}
 				/>
 			)}
 		</div>
