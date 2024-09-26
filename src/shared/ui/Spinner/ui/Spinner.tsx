@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
-import { SpinnerSizes } from '../lib/SpinnerSizes.ts'
+
+import { SpinnerSizes } from '../lib/SpinnerSizes'
 
 import styles from './Spinner.module.scss'
 

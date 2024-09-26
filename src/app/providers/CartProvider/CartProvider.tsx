@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
 
-import { useAppDispatch } from '@shared/libs/hooks'
+import { useAppDispatch, useAppSelector } from '@shared/libs/hooks'
 
+import { getAllAuthStates } from '@entities/auth'
 import { fetchCartByUserID } from '@entities/cart'
 
 interface CartProviderPropsTypes {
 	children: React.ReactNode
 }
 
-const USER_ID = 11
-
 export const CartProvider: React.FC<CartProviderPropsTypes> = ({ children }) => {
+	const { isAuthenticated, userId } = useAppSelector(getAllAuthStates)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		dispatch(fetchCartByUserID(USER_ID))
-	}, [dispatch])
+		if (!isAuthenticated || !userId) return
+
+		dispatch(fetchCartByUserID(userId))
+	}, [dispatch, isAuthenticated, userId])
 
 	return <>{children}</>
 }

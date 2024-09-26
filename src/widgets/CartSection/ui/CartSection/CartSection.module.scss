@@ -1,4 +1,6 @@
 .section {
+	flex: 1 1;
+	width: 100%;
 	background-color: var(--color-white);
 	padding: torem(51) 0;
 }
