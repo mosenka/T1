@@ -1,28 +1,24 @@
 import React, { useMemo } from 'react'
 
-import { useAppSelector } from '@shared/libs/hooks'
 import { Button, ErrorMessage } from '@shared/ui'
 
 import { ProductCard, ProductCardLoader, useGetProductsList } from '@entities/product'
-import { AddToCartButton, getCartStates, getProductCountInCart } from '@entities/cart'
+import { CartActionButton } from '@features/CartActionButton'
 
 import styles from './ProductsList.module.scss'
 
 export const ProductsList: React.FC = () => {
 	const { isLoading, isError, productsList, fetchMoreProducts, isHideButton } = useGetProductsList()
-	const { cart } = useAppSelector(getCartStates)
 
 	const loadingCardsList = Array.from({ length: 12 }, (_, i) => <ProductCardLoader key={i} />)
 
 	const productsCardsList = useMemo(() => {
 		return productsList?.map(product => {
-			const quantity = getProductCountInCart(product.id, cart)
-
-			const button = <AddToCartButton count={quantity} />
+			const button = <CartActionButton productId={product.id} totalCount={product.stock} />
 
 			return <ProductCard product={product} key={product.id} cartButton={button} />
 		})
-	}, [productsList, cart])
+	}, [productsList])
 
 	if (isLoading) {
 		return <div className={styles.list}>{loadingCardsList}</div>

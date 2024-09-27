@@ -1,0 +1,13 @@
+.button {
+	&.xl {
+		min-width: torem(175);
+
+		@include laptop {
+			min-width: torem(150);
+		}
+
+		@include tablet {
+			min-width: torem(125);
+		}
+	}
+}

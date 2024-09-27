@@ -1,11 +1,10 @@
+import { Spinner } from '@shared/ui'
 import classNames from 'classnames'
 import React from 'react'
 
-import { Spinner } from '@shared/ui'
-
-import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
-import { EmptyCartButton } from '../EmptyCartButton/EmptyCartButton'
+import { AddToCartButtonSizes } from '../../../libs/AddToCartButtonSizes'
 import { ActionCartButton } from '../ActionCartButton/ActionCartButton'
+import { EmptyCartButton } from '../EmptyCartButton/EmptyCartButton'
 
 import styles from './AddToCartButton.module.scss'
 
@@ -34,7 +33,7 @@ export const AddToCartButton: AddToCartButtonExtendsType & React.FC<AddToCartBut
 
 	return (
 		<div className={classNames(styles.wrapper, styles[size])}>
-			{count > 0 ? (
+			{count && count > 0 ? (
 				<>
 					<ActionCartButton
 						icon={'iconMinus'}

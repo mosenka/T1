@@ -1,23 +1,16 @@
-import React, { useMemo } from 'react'
-
-import { useAppSelector } from '@shared/libs/hooks'
+import React from 'react'
 
 import { PriceCard, ProductDetailsCard, ProductResponseType } from '@entities/product'
-import { AddToCartButton, getCartStates, getProductCountInCart } from '@entities/cart'
+import { AddToCartButtonSizes } from '@entities/cart'
+
 import { Raiting } from '@features/Raiting'
+import { CartActionButton } from '@features/CartActionButton'
 
 interface ProductDetailsInformationPropsType {
 	product: ProductResponseType
-	id: string
 }
 
-export const ProductDetailsInformation: React.FC<ProductDetailsInformationPropsType> = ({ product, id }) => {
-	const { cart } = useAppSelector(getCartStates)
-
-	const productQuantity = useMemo(() => {
-		return getProductCountInCart(Number(id), cart)
-	}, [cart, id])
-
+export const ProductDetailsInformation: React.FC<ProductDetailsInformationPropsType> = ({ product }) => {
 	return (
 		<ProductDetailsCard>
 			<ProductDetailsCard.HEAD>
@@ -36,7 +29,13 @@ export const ProductDetailsInformation: React.FC<ProductDetailsInformationPropsT
 			<PriceCard
 				price={product.price}
 				discountPercent={product.discountPercentage}
-				addToCartButton={<AddToCartButton size={AddToCartButton.SIZE.XL} count={productQuantity} />}
+				addToCartButton={
+					<CartActionButton
+						productId={product?.id}
+						totalCount={product.stock}
+						size={AddToCartButtonSizes.XL}
+					/>
+				}
 			/>
 		</ProductDetailsCard>
 	)

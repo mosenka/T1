@@ -1,10 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import React, { FormEvent, useCallback, useState } from 'react'
 
 import { isFetchError } from '@shared/api'
 import { Button, Container, ErrorMessage, Heading, Input, Spinner } from '@shared/ui'
 
 import { useSignInMutation } from '@entities/auth/api'
-import { useNavigate } from 'react-router-dom'
 
 import styles from './LoginForm.module.scss'
 
@@ -63,17 +63,20 @@ export const LoginForm: React.FC = () => {
 							aria-invalid={Boolean(error && error?.message)}
 							disabled={isLoading}
 							autoComplete="on"
+							aria-label={'login form'}
 						/>
 						<Input
 							placeholder={'Password'}
 							className={styles.input}
 							sizing={Input.SIZING.XL}
+							type={'password'}
 							value={password}
 							name={'password'}
 							onChange={event => setPassword(event.target.value)}
 							aria-invalid={Boolean(error && error?.message)}
 							disabled={isLoading}
 							autoComplete="on"
+							aria-label={'password form'}
 						/>
 						<Button size={Button.SIZE.XL} type={'submit'} disabled={isLoading} className={styles.button}>
 							{isLoading && <Spinner size={Spinner.SIZE.XS} />}

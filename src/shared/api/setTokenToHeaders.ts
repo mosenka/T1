@@ -7,7 +7,7 @@ export const setTokenToHeaders = async (headers: Headers) => {
 		return headers
 	}
 
-	headers.set('Authorization', `${accessToken}`)
+	headers.set('Authorization', `Bearer ${accessToken}`)
 
 	return headers
 }

@@ -1,13 +1,21 @@
 .spinner {
-	display: block;
+	display: inline-block;
 	aspect-ratio: 1 / 1;
 	height: auto;
 	margin: 0;
 	background: transparent;
-	border-top: 4px solid var(--color-orange-white);
+	border-top: 4px solid;
 	border-right: 4px solid transparent;
 	border-radius: 50%;
 	animation: 1s spin linear infinite;
+
+	&.orange {
+		border-top-color: var(--color-orange-white);
+	}
+
+	&.white {
+		border-top-color: var(--color-white);
+	}
 
 	&.xs {
 		width: torem(15);

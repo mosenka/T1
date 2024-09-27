@@ -1,11 +1,12 @@
+import classNames from 'classnames'
+
 import React, { ButtonHTMLAttributes } from 'react'
 
 import { Button, Icon, IconsNameType } from '@shared/ui'
 
-import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
+import { AddToCartButtonSizes } from '../../../libs/AddToCartButtonSizes'
 
 import styles from './ActionCartButton.module.scss'
-import classNames from 'classnames'
 
 interface ActionCartButtonPropsTypes extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: AddToCartButtonSizes

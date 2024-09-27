@@ -1,20 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { CartsListResponseType, CartResponseType } from '@entities/cart'
-import { fetchCartByUserID } from '@entities/cart/api'
+import { fetchCartByUserID, updateCart } from '@entities/cart/api'
 
 interface InitialStateTypes {
 	isLoading: boolean
 	cart: CartResponseType | null
 	isError: boolean
 	error: string | null
+	isUpdating: boolean
+	updateError: string | null
 }
 
 const initialState: InitialStateTypes = {
 	isLoading: false,
 	cart: null,
 	isError: false,
-	error: null
+	error: null,
+	isUpdating: false,
+	updateError: null
 }
 
 export const cartSlice = createSlice({
@@ -41,6 +45,22 @@ export const cartSlice = createSlice({
 				state.isLoading = false
 				state.error = action.payload ?? 'Ошибка загрузки данных'
 				state.cart = null
+			})
+			.addCase(updateCart.pending, state => {
+				state.isUpdating = true
+				state.updateError = null
+			})
+			.addCase(updateCart.fulfilled, (state, action) => {
+				state.updateError = null
+				state.isUpdating = false
+				state.cart = action.payload
+			})
+			.addCase(updateCart.rejected, (state, action) => {
+				state.isUpdating = false
+				state.updateError = action.payload ?? 'Ошибка загрузки данных'
+			})
+			.addMatcher(updateCart.settled, state => {
+				state.isUpdating = false
 			})
 	}
 })

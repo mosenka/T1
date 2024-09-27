@@ -1,6 +1,7 @@
 import { StoryObj } from '@storybook/react'
 import type { Meta } from '@storybook/react'
 import { styled } from '@storybook/theming'
+import { fn } from '@storybook/test'
 
 import { ProductCard as ProductCardComponent } from './ProductCard'
 import { ProductListItemType } from '../../types/ProductListItemType'
@@ -36,7 +37,7 @@ export default {
 	},
 	args: {
 		product: product,
-		cartButton: <AddToCartButton />
+		cartButton: <AddToCartButton count={0} addItemHandler={fn()} removeItemHandler={fn()} />
 	}
 } satisfies Meta<typeof ProductCardComponent>
 

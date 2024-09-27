@@ -4,15 +4,15 @@ import { useAppSelector } from '@shared/libs/hooks'
 import { ErrorMessage } from '@shared/ui'
 
 import {
-	AddToCartButton,
 	CartsProductCard,
 	CartsProductCardLoader,
 	EmptyCardMessage,
 	getCartStates,
-	RemoveFromCartButton,
 	TotalSummaryCard,
 	TotalSummaryCardLoader
 } from '@entities/cart'
+
+import { CartActionButton, RemoveFromCartButton } from '@features/CartActionButton'
 
 import styles from './CartsProductsList.module.scss'
 
@@ -24,11 +24,18 @@ export const CartsProductsList: React.FC = () => {
 	const cardsRenderList = cart?.products?.map(product => {
 		const cartButton = (
 			<div className={styles.buttons}>
-				<AddToCartButton count={product.quantity} />
+				<CartActionButton productId={product.id} />
 				{product.quantity > 0 && <RemoveFromCartButton id={product.id} />}
 			</div>
 		)
-		return <CartsProductCard product={product} key={product.id} cartButton={cartButton} />
+		return (
+			<CartsProductCard
+				product={product}
+				key={product.id}
+				cartButton={cartButton}
+				isDeleted={product.quantity === 0}
+			/>
+		)
 	})
 
 	if (isError) {
@@ -48,7 +55,11 @@ export const CartsProductsList: React.FC = () => {
 		return (
 			<div className={styles.content}>
 				<div className={styles.list}>{cardsRenderList}</div>
-				<TotalSummaryCard count={cart.totalProducts} price={cart.total} totalPrice={cart?.discountedTotal} />
+				<TotalSummaryCard
+					count={cart.totalProducts}
+					price={parseFloat(cart.total.toFixed(2))}
+					totalPrice={cart?.discountedTotal}
+				/>
 			</div>
 		)
 	}

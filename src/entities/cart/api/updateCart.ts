@@ -2,20 +2,29 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { isFetchError } from '@shared/api'
 
-import { CartsListResponseType } from '@entities/cart'
 import { actionBeforeRedirect, getAccessToken } from '@entities/auth'
+import { CartResponseType } from '@entities/cart'
 
-export const fetchCartByUserID = createAsyncThunk<CartsListResponseType, number, { rejectValue: string }>(
-	'cart/fetchByUserID',
-	async (userID: number, thunkApi) => {
+import { UpdateCartValuesType } from '../types/UpdateCartValuesType'
+
+export const updateCart = createAsyncThunk<CartResponseType, UpdateCartValuesType, { rejectValue: string }>(
+	'cart/updateCart',
+	async (data: UpdateCartValuesType, thunkApi) => {
 		const accessToken = getAccessToken()
 
+		const { cartId, products } = data
+
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/carts/user/${userID}`, {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/carts/${cartId}`, {
+				method: 'PUT',
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 					'Content-Type': 'application/json'
-				}
+				},
+				body: JSON.stringify({
+					merge: false,
+					products: products
+				})
 			})
 
 			const data = await response.json()

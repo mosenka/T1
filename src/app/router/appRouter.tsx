@@ -34,6 +34,7 @@ export function appRouter() {
 					path: import.meta.env.VITE_LOGIN_URL,
 					element: (
 						<AuthLayout>
+							<PageTitle title={'Sign in | Goods4you'} />
 							<LoginPage />
 						</AuthLayout>
 					)
