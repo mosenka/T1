@@ -3,7 +3,7 @@ import React, { ButtonHTMLAttributes } from 'react'
 
 import { Button, Icon, Spinner } from '@shared/ui'
 
-import { AddToCartButtonSizes } from '../../../libs/AddToCartButtonSizes'
+import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
 
 import styles from './EmptyCartButton.module.scss'
 

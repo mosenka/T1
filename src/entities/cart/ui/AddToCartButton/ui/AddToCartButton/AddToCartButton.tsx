@@ -2,7 +2,7 @@ import { Spinner } from '@shared/ui'
 import classNames from 'classnames'
 import React from 'react'
 
-import { AddToCartButtonSizes } from '../../../libs/AddToCartButtonSizes'
+import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
 import { ActionCartButton } from '../ActionCartButton/ActionCartButton'
 import { EmptyCartButton } from '../EmptyCartButton/EmptyCartButton'
 

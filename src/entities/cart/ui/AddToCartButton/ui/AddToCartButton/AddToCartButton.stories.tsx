@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming'
 import { fn } from '@storybook/test'
 
 import { AddToCartButton } from './AddToCartButton'
-import { AddToCartButtonSizes } from '../../../libs/AddToCartButtonSizes'
+import { AddToCartButtonSizes } from '../../libs/AddToCartButtonSizes'
 
 const Column = styled.div`
 	display: flex;
@@ -40,8 +40,8 @@ type Story = StoryObj<typeof AddToCartButton>
 export const EmptyButton: Story = {
 	render: args => (
 		<Column>
-			<AddToCartButton count={0} size={AddToCartButtonSizes.M} {...args} />
-			<AddToCartButton count={0} size={AddToCartButtonSizes.XL} {...args} />
+			<AddToCartButton size={AddToCartButtonSizes.M} {...args} />
+			<AddToCartButton size={AddToCartButtonSizes.XL} {...args} />
 		</Column>
 	)
 }
@@ -49,8 +49,8 @@ export const EmptyButton: Story = {
 export const LabeledButton: Story = {
 	render: args => (
 		<Column>
-			<AddToCartButton count={5} size={AddToCartButtonSizes.M} {...args} />
-			<AddToCartButton count={5} size={AddToCartButtonSizes.XL} {...args} />
+			<AddToCartButton {...args} count={5} size={AddToCartButtonSizes.M} />
+			<AddToCartButton {...args} count={5} size={AddToCartButtonSizes.XL} />
 		</Column>
 	)
 }
