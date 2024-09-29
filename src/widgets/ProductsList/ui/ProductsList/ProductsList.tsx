@@ -20,28 +20,31 @@ export const ProductsList: React.FC = () => {
 		})
 	}, [productsList])
 
-	if (isLoading) {
-		return <div className={styles.list}>{loadingCardsList}</div>
-	}
-
-	if (isError) {
-		return <ErrorMessage />
-	}
-
-	if (productsList.length === 0) {
+	if (productsList.length === 0 && !isLoading) {
 		return <p> список пуст...</p>
 	}
 
 	return (
 		<>
-			<div className={styles.list}>{productsCardsList}</div>
-			{!isHideButton && (
-				<div className={styles.buttonWrapper}>
-					<Button size={Button.SIZE.XL} aria-label={'show more products card'} onClick={fetchMoreProducts}>
-						Show more
-					</Button>
-				</div>
+			{productsList?.length > 1 && (
+				<>
+					<div className={styles.list}>{productsCardsList}</div>
+					{isLoading && <div className={styles.list}>{loadingCardsList}</div>}
+					{!isHideButton && (
+						<div className={styles.buttonWrapper}>
+							<Button
+								size={Button.SIZE.XL}
+								aria-label={'show more products card'}
+								onClick={fetchMoreProducts}
+								disabled={isLoading}
+							>
+								Show more
+							</Button>
+						</div>
+					)}
+				</>
 			)}
+			{isError && <ErrorMessage />}
 		</>
 	)
 }
