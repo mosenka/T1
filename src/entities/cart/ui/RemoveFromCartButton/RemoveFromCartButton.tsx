@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './RemoveFromCartButton.module.scss'
 
 interface RemoveFromCartButtonPropsType {
-	id: string
+	id: string | number
 }
 
 export const RemoveFromCartButton: React.FC<RemoveFromCartButtonPropsType> = ({ id }) => {

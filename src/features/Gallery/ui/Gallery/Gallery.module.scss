@@ -19,6 +19,7 @@
 
 	&.isActive {
 		border-color: var(--color-violet);
+		transition: all 0.4s;
 	}
 }
 

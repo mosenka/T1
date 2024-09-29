@@ -4,19 +4,21 @@ import React, { useMemo } from 'react'
 import { Icon } from '@shared/ui'
 import styles from './Raiting.module.scss'
 
-type RatingCountType = 1 | 2 | 3 | 4 | 5
-
 interface RaitingPropsType {
-	count: RatingCountType
+	count: number
 }
 
 export const Raiting: React.FC<RaitingPropsType> = ({ count }) => {
+	if (count > 5) {
+		throw new Error('Размер рейтинга не может превышать 5')
+	}
+
 	const starsList = useMemo(() => {
 		const list = []
 
 		for (let i = 1; i < 6; i++) {
 			const elem = (
-				<span className={classNames(styles.star, { [styles.isActive]: i <= count })}>
+				<span key={i} className={classNames(styles.star, { [styles.isActive]: i <= Math.round(count) })}>
 					<Icon icon={'iconStar'} width={20} />
 				</span>
 			)

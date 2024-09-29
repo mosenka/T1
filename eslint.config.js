@@ -37,5 +37,6 @@ export default [
 			'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 			'no-multiple-empty-lines': ['error', { max: 1 }]
 		}
+
 	}
 ]

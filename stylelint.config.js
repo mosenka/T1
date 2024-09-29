@@ -9,6 +9,7 @@ export default {
 		'selector-class-pattern': null,
 		'scss/at-function-pattern': /^[a-z][a-zA-Z0-9]*$/,
 		'scss/dollar-variable-pattern': /^[a-z][a-zA-Z0-9]*$/,
-		'scss/at-mixin-pattern': /^[a-z][a-zA-Z0-9]*$/
+		'scss/at-mixin-pattern': /^[a-z][a-zA-Z0-9]*$/,
+		'scss/at-extend-no-missing-placeholder': null
 	}
 }
