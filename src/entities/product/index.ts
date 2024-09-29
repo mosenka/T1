@@ -1,6 +1,7 @@
 export * from './api/productApi'
 
 export * from './libs/hooks/useGetProductsList'
+export * from './libs/utils/discountedPriceAdapter'
 
 export * from './model/states'
 

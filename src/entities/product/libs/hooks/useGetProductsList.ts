@@ -43,7 +43,8 @@ export const useGetProductsList = () => {
 	}, [trigger])
 
 	const fetchMoreProducts = useCallback(() => {
-		const skip = data && data?.skip ? data.skip + LIMIT : 0
+		const initSkip = data?.skip ?? 0
+		const skip = initSkip + LIMIT
 
 		trigger({ limit: LIMIT, skip, q: queryString })
 			.unwrap()
