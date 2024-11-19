@@ -1,3 +1,4 @@
+import { aliases } from './aliases'
 import { defineConfig } from 'vite'
 import dotenv from 'dotenv'
 import react from '@vitejs/plugin-react'
@@ -17,16 +18,7 @@ export default defineConfig({
 		'process.env': process.env
 	},
 	resolve: {
-		alias: {
-			'@': path.resolve(__dirname, './src'),
-			'@root': path.resolve(__dirname, '.'),
-			'@app': path.resolve(__dirname, './src/app'),
-			'@entities': path.resolve(__dirname, './src/entities'),
-			'@features': path.resolve(__dirname, './src/features'),
-			'@pages': path.resolve(__dirname, './src/pages'),
-			'@shared': path.resolve(__dirname, './src/shared'),
-			'@widgets': path.resolve(__dirname, './src/widgets')
-		}
+		alias: aliases
 	},
 	css: {
 		modules: {

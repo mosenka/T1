@@ -12,7 +12,7 @@ interface CartNavButtonPropsType {
 export const CartNavButton: React.FC<CartNavButtonPropsType> = ({ count = 0 }) => {
 	return (
 		<div className={styles.wrapper}>
-			<Link to={'cart'} className={styles.button}>
+			<Link to={'/cart'} className={styles.button}>
 				<span className={styles.text}>Cart</span>
 				<Icon icon={'iconCart'} width={20} className={styles.icon} />
 				{count > 0 && <span className={styles.count}>{count > 99 ? '99+' : count}</span>}

@@ -6,7 +6,7 @@ import { useAppSelector } from '@shared/libs/hooks'
 const LIMIT = 12
 
 export const useGetProductsList = () => {
-	const [trigger, { data, isLoading, isError }] = useLazySearchProductsQuery()
+	const [trigger, { data, isFetching, isError }] = useLazySearchProductsQuery()
 	const { queryString } = useAppSelector(getAllProductsStates)
 
 	const [isHideButton, setHideButton] = useState<boolean>(false)
@@ -43,7 +43,8 @@ export const useGetProductsList = () => {
 	}, [trigger])
 
 	const fetchMoreProducts = useCallback(() => {
-		const skip = data && data?.skip ? data.skip + LIMIT : 0
+		const initSkip = data?.skip ?? 0
+		const skip = initSkip + LIMIT
 
 		trigger({ limit: LIMIT, skip, q: queryString })
 			.unwrap()
@@ -53,5 +54,5 @@ export const useGetProductsList = () => {
 			})
 	}, [trigger, data, queryString])
 
-	return { isLoading, isError, productsList, fetchMoreProducts, isHideButton }
+	return { isLoading: isFetching, isError, productsList, fetchMoreProducts, isHideButton }
 }

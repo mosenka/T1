@@ -1,8 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+
+import { baseQueryWithReauth } from './baseQueryWithReauth'
 import { tags } from './tags'
 
 export const commonApi = createApi({
-	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
+	baseQuery: baseQueryWithReauth,
 	reducerPath: 'commonApi',
 	tagTypes: tags,
 	endpoints: () => ({})

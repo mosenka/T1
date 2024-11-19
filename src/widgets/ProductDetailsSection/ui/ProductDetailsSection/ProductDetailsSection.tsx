@@ -50,7 +50,7 @@ export const ProductDetailsSection: React.FC = () => {
 			<section className={styles.section}>
 				<Container className={styles.container}>
 					<Gallery images={imagesList} initMainIndex={0} />
-					<ProductDetailsInformation product={product} id={id ?? ''} />
+					<ProductDetailsInformation product={product} />
 				</Container>
 			</section>
 		)

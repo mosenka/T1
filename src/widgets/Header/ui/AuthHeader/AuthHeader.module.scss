@@ -1,0 +1,7 @@
+.container {
+	padding: torem(23) 0;
+
+	@include mobile {
+		padding: torem(23) torem(10);
+	}
+}

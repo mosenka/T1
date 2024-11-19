@@ -1,10 +1,12 @@
 import { StoryObj } from '@storybook/react'
 import type { Meta } from '@storybook/react'
 import { styled } from '@storybook/theming'
+// import { fn } from '@storybook/test'
+
+import { EmptyCartButton } from '@entities/cart/ui/AddToCartButton'
 
 import { ProductCard as ProductCardComponent } from './ProductCard'
 import { ProductListItemType } from '../../types/ProductListItemType'
-import { AddToCartButton } from '@entities/cart'
 
 import img from './img.png'
 
@@ -17,7 +19,7 @@ const product: ProductListItemType = {
 }
 
 const Wrapper = styled.div`
-	width: 50%;
+	width: 600px;
 `
 
 export default {
@@ -36,7 +38,7 @@ export default {
 	},
 	args: {
 		product: product,
-		cartButton: <AddToCartButton />
+		cartButton: <EmptyCartButton />
 	}
 } satisfies Meta<typeof ProductCardComponent>
 

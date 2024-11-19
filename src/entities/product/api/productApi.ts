@@ -6,14 +6,14 @@ export const productApi = commonApi.injectEndpoints({
 	endpoints: build => ({
 		searchProducts: build.query<ProductsListResponseType, ProductSearchParamsType>({
 			query: params => ({
-				url: `/products/search`,
+				url: `auth/products/search`,
 				params
 			}),
 			providesTags: ['ProductsList']
 		}),
 		getProductById: build.query<ProductResponseType, number | string>({
 			query: id => ({
-				url: `/products/${id}`
+				url: `auth/products/${id}`
 			}),
 			providesTags: ['Product']
 		})
