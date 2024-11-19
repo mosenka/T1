@@ -1,0 +1,42 @@
+.spinner {
+	display: inline-block;
+	aspect-ratio: 1 / 1;
+	height: auto;
+	margin: 0;
+	background: transparent;
+	border-top: 4px solid;
+	border-right: 4px solid transparent;
+	border-radius: 50%;
+	animation: 1s spin linear infinite;
+
+	&.orange {
+		border-top-color: var(--color-orange-white);
+	}
+
+	&.white {
+		border-top-color: var(--color-white);
+	}
+
+	&.xs {
+		width: torem(15);
+		border-width: 2px;
+	}
+
+	&.m {
+		width: torem(75);
+	}
+
+	&.xl {
+		width: torem(100);
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}

@@ -1,32 +1,31 @@
-import { faker } from '@faker-js/faker'
 import React from 'react'
 
-import { CartsProductCard, AddToCartButton, RemoveFromCartButton } from '@entities/cart'
+import { useAppSelector } from '@shared/libs/hooks'
+import { ErrorMessage } from '@shared/ui'
 
-import product from '@shared/assets/img/product.png'
+import {
+	CartsProductCard,
+	CartsProductCardLoader,
+	EmptyCardMessage,
+	getCartStates,
+	TotalSummaryCard,
+	TotalSummaryCardLoader
+} from '@entities/cart'
+
+import { CartActionButton, RemoveFromCartButton } from '@features/CartActionButton'
 
 import styles from './CartsProductsList.module.scss'
-import { ProductType } from 'entities/product'
-
-const LIST: Array<ProductType & { count: number }> = [
-	{ id: faker.string.alpha(10), name: 'Essence Mascara Lash Princess', price: 110, count: 1, image: product },
-	{ id: faker.string.alpha(10), name: 'Essence Mascara Lash Princess', price: 110, count: 1, image: product },
-	{ id: faker.string.alpha(10), name: 'Essence Mascara Lash Princess', price: 110, count: 5, image: product },
-	{
-		id: faker.string.alpha(10),
-		name: 'Essence Mascara Lash Princess',
-		price: 110,
-		count: 0,
-		image: product
-	}
-]
 
 export const CartsProductsList: React.FC = () => {
-	const cardsList = LIST.map(product => {
+	const { cart, isLoading, isError } = useAppSelector(getCartStates)
+
+	const loadingCardsList = Array.from({ length: 5 }, (_, i) => <CartsProductCardLoader key={i} />)
+
+	const cardsRenderList = cart?.products?.map(product => {
 		const cartButton = (
 			<div className={styles.buttons}>
-				<AddToCartButton count={product.count} />
-				{product.count > 0 && <RemoveFromCartButton id={product.id} />}
+				<CartActionButton productId={product.id} />
+				{product.quantity > 0 && <RemoveFromCartButton id={product.id} />}
 			</div>
 		)
 		return (
@@ -34,10 +33,36 @@ export const CartsProductsList: React.FC = () => {
 				product={product}
 				key={product.id}
 				cartButton={cartButton}
-				isDeleted={product.count === 0}
+				isDeleted={product.quantity === 0}
 			/>
 		)
 	})
 
-	return <div className={styles.list}>{cardsList}</div>
+	if (isError) {
+		return <ErrorMessage />
+	}
+
+	if (isLoading) {
+		return (
+			<div className={styles.content}>
+				<div className={styles.list}>{loadingCardsList}</div>
+				<TotalSummaryCardLoader />
+			</div>
+		)
+	}
+
+	if (cart && cart?.products.length > 0) {
+		return (
+			<div className={styles.content}>
+				<div className={styles.list}>{cardsRenderList}</div>
+				<TotalSummaryCard
+					count={cart.totalProducts}
+					price={parseFloat(cart.total.toFixed(2))}
+					totalPrice={cart?.discountedTotal}
+				/>
+			</div>
+		)
+	}
+
+	return <EmptyCardMessage />
 }

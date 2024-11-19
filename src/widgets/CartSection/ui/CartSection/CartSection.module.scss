@@ -1,4 +1,6 @@
 .section {
+	flex: 1 1;
+	width: 100%;
 	background-color: var(--color-white);
 	padding: torem(51) 0;
 }
@@ -8,21 +10,5 @@
 
 	@include tablet {
 		padding-bottom: torem(20);
-	}
-}
-
-.content {
-	display: grid;
-	grid-template-columns: 1fr torem(358);
-	gap: torem(48);
-	padding-bottom: torem(37);
-
-	@include laptop {
-		grid-template-columns: 1fr torem(250);
-		gap: torem(25);
-	}
-
-	@include tablet {
-		grid-template-columns: 1fr;
 	}
 }

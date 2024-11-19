@@ -14,7 +14,7 @@ export default [
 	js.configs.recommended,
 	eslintConfigPrettier,
 	jsxA11y.flatConfigs.strict,
-	{ ignores: ['dist', 'vite.config.ts'] },
+	{ ignores: ['dist', 'vite.config.ts', 'aliases.ts'] },
 	{
 		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
@@ -37,5 +37,6 @@ export default [
 			'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 			'no-multiple-empty-lines': ['error', { max: 1 }]
 		}
+
 	}
 ]

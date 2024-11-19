@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { Container, Input, Heading } from '@shared/ui'
+import { Container, Heading } from '@shared/ui'
 import { ProductsList } from '@widgets/ProductsList'
+import { SearchProductsInput } from '@entities/product'
 
 import styles from './CatalogSection.module.scss'
 
@@ -13,12 +14,7 @@ export const CatalogSection: React.FC = () => {
 					Catalog
 				</Heading>
 				<div className={styles.inputWrapper}>
-					<Input
-						placeholder={'Search by title'}
-						type={'text'}
-						sizing={Input.SIZING.XL}
-						aria-label="Search by title"
-					/>
+					<SearchProductsInput />
 				</div>
 				<ProductsList />
 			</Container>
